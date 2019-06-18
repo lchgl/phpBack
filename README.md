@@ -1,2 +1,6 @@
-# phpBack
-a backgroundManagement with laravel
+#Laravel写的后台管理系统
+
+> 冲冲冲
+
+
+##开发环境
