@@ -7,12 +7,13 @@
                     <h3>修改密码</h3>
                 </div>
                 <br>
-                <form method="post">
+                <form method="post" action="">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label for="formGroupExampleInput">原密码</label>
                         <div class="input-group ">
                             <div class="input-group-addon"><i class="fa fa-user-o"></i></div>
-                            <input type="text" class="form-control" name="origin_password" id="inlineFormInputGroup" placeholder="请输入原密码">
+                            <input type="text" class="form-control" name="original_password" id="inlineFormInputGroup" placeholder="请输入原密码">
                         </div>
                     </div>
                     <div class="form-group">
@@ -26,7 +27,7 @@
                         <label for="icon-number">确认密码</label>
                         <div class="input-group ">
                             <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                            <input type="text" class="form-control" id="icon-number" name="conform_password" placeholder="再次输入新密码">
+                            <input type="password" class="form-control" id="icon-number" name="password_confirmation" placeholder="再次输入新密码">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-general btn-blue mr-2">确认修改</button>
@@ -34,4 +35,5 @@
             </div>
         </div>
     </div>
+    @include('admin.layout.errors')
 @endsection

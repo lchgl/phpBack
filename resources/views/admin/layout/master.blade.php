@@ -29,7 +29,7 @@
                          MAIN NAVBAR
 ======================================================-->
 <header class="header">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg " style="z-index: 999">
         <div class="search-box">
             <button class="dismiss"><i class="icon-close"></i></button>
             <form id="searchForm" action="#" role="search">
@@ -337,7 +337,6 @@
 
     </div>
 </div>
-
 <!--Global Javascript -->
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/popper/popper.min.js"></script>
@@ -349,6 +348,7 @@
 <script src="/static/js/front.js"></script>
 
 <!--Core Javascript -->
+@yield('footScript')
 <script>
     new Chart(document.getElementById("myChart4").getContext('2d'), {
         type: 'doughnut',
