@@ -20,4 +20,6 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     //修改密码
     Route::get('/changePassword','MyController@passwordForm');
     Route::post('/changePassword','MyController@changePassword');
+    //资源管理器的标签管理
+    Route::resource('tag','tagController');
 });

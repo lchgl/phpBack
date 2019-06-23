@@ -287,11 +287,11 @@
         <hr>
         <!-- Sidebar Navidation Menus-->
         <ul class="list-unstyled">
-            <li> <a href="index.html"><i class="icon-home"></i>Home</a></li>
-            <li><a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Apps </a>
+            <li> <a href="/admin/changePassword"><i class="icon-home"></i>我的资料</a></li>
+            <li><a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>资源管理</a>
                 <ul id="apps" class="collapse list-unstyled">
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="email.html">Email</a></li>
+                    <li><a href="/admin/tag">标签管理</a></li>
+                    <li><a href="email.html">视频管理</a></li>
                     <li><a href="media.html">Media</a></li>
                     <li><a href="invoice.html">Invoice</a></li>
                 </ul>
@@ -336,6 +336,7 @@
         @yield('content')
 
     </div>
+    @include('admin.layout.errors')
 </div>
 <!--Global Javascript -->
 <script src="/static/js/jquery.min.js"></script>
