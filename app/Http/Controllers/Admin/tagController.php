@@ -64,6 +64,8 @@ class tagController extends CommonController
     public function edit($id)
     {
         //
+        $model = Tag::find($id);
+        return view('admin/tag/edit',compact('model'));
     }
 
     /**
@@ -76,6 +78,10 @@ class tagController extends CommonController
     public function update(Request $request, $id)
     {
         //
+        $model = Tag::find($id);
+        $model['name'] = $request['name'];
+        $model->save();
+        return redirect('/admin/tag');
     }
 
     /**
@@ -87,7 +93,7 @@ class tagController extends CommonController
     public function destroy($id)
     {
         //
-        tag::destroy($id);
+        Tag::destroy($id);
         return  $this->success('删除成功');
     }
 }
