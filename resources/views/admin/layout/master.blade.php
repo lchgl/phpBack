@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    <meta name="csrf-token" content="{{csrf_token()}}">
 
     <title>Bootstrap Admin Template </title>
     <link rel="shortcut icon" href="/static/img/favicon.ico">
@@ -350,6 +351,9 @@
 @include('flash::message')
 <script>
     $('#flash-overlay-modal').modal();
+    $.ajaxSetup({
+        headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
+    })
 </script>
 <!--Core Javascript -->
 @yield('footScript')

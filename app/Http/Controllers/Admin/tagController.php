@@ -87,5 +87,7 @@ class tagController extends Controller
     public function destroy($id)
     {
         //
+        tag::destroy($id);
+        return  response()->json(['message'=>'删除成功', 'valid'=> 1]);
     }
 }

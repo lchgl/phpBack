@@ -39,3 +39,21 @@
         </div>
     </form>
 @endsection
+@section('footScript')
+    <script>
+            function del(id){
+                var flag = confirm('您确定要删除？');
+                if(!flag){
+                    return false;
+                }
+                $.ajax({
+                    url:'/admin/tag/' + id,
+                    method:'DELETE',
+                    success:function(data){
+                        alert(data.message);
+                        location.reload()
+                    }
+                })
+            }
+    </script>
+@endsection
