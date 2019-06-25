@@ -21,5 +21,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('/changePassword','MyController@passwordForm');
     Route::post('/changePassword','MyController@changePassword');
     //资源管理器的标签管理
-    Route::resource('tag','tagController');
+    Route::resource('tag','TagController');
+    //资源路由
+    Route::resource('lesson','LessonController');
 });

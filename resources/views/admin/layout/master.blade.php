@@ -292,7 +292,7 @@
             <li><a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>资源管理</a>
                 <ul id="apps" class="collapse list-unstyled">
                     <li><a href="/admin/tag">标签管理</a></li>
-                    <li><a href="email.html">视频管理</a></li>
+                    <li><a href="/admin/lesson">视频管理</a></li>
                     <li><a href="media.html">Media</a></li>
                     <li><a href="invoice.html">Invoice</a></li>
                 </ul>
