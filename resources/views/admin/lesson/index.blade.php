@@ -9,7 +9,7 @@
     <form action="" method="post" class="form-horizontal" role="form">
         <div class="panel panel-default">
             <div class="panel-title" style="line-height: 48px;background: #ccc;padding: 0 15px;">
-                资源管理tag
+                课程管理
             </div>
             <div class="panel-body">
                 <table class="table table-hover">

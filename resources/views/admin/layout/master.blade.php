@@ -348,6 +348,7 @@
 <script src="/static/js/jquery.validate.min.js"></script>
 <script src="/static/js/chart.min.js"></script>
 <script src="/static/js/front.js"></script>
+<script src="/static/js/vue.js"></script>
 @include('flash::message')
 <script>
     $('#flash-overlay-modal').modal();
