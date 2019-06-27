@@ -42,6 +42,11 @@ return [
     */
 
     'disks' => [
+        //默认是local，现在添加一个attachment，路径也该成attachment；
+        'attachment' => [
+            'driver' => 'local',
+            'root' => 'attachment',
+        ],
 
         'local' => [
             'driver' => 'local',
