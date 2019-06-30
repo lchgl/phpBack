@@ -36,7 +36,8 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">预览图片</label>
                     <div class="col-sm-10">
-                        <input type="file"  class="form-control" name="preview" onchange="PreviewImage(this,'imgHeadPhoto','divPreview');" size="20" />
+                        <input type="file"  class="form-control" id="imgFile" onchange="PreviewImage(this,'imgHeadPhoto','divPreview');" size="20" />
+                        <input type="text"  class="form-control" id="imgUrl" name="preview" >
                     </div>
                     <div>
                         <img id="imgHeadPhoto" src="noperson.jpg" style="width: 160px; height: 170px; border: solid 1px #d2e2e2;"
@@ -130,6 +131,7 @@
         });
         //js本地图片预览，兼容ie[6-9]、火狐、Chrome17+、Opera11+、Maxthon3
         function PreviewImage(fileObj, imgPreviewId, divPreviewId) {
+            uploadImg();
             var allowExtention = ".jpg,.bmp,.gif,.png"; //允许上传文件的后缀名document.getElementById("hfAllowPicSuffix").value;
             var extention = fileObj.value.substring(fileObj.value.lastIndexOf(".") + 1).toLowerCase();
             var browserVersion = window.navigator.userAgent.toUpperCase();
@@ -184,6 +186,28 @@
                 fileObj.outerHTML = fileObj.outerHTML;
             }
             return fileObj.value;    //返回路径
+        }
+        function uploadImg(){
+            var file_obj = document.getElementById('imgFile').files[0];
+            var fd = new FormData();
+            fd.append('file', file_obj);
+            $.ajax({
+                url:'/component/uploader',
+                type:'POST',
+                data:fd,
+                processData:false,  //tell jQuery not to process the data
+                contentType: false,  //tell jQuery not to set contentType
+                //这儿的三个参数其实就是XMLHttpRequest里面带的信息。
+                success:function (arg,a1,a2) {
+                    // console.log(arg);
+                    // console.log(a1);
+                    // console.log(a2);
+                    $('#imgUrl').val(arg.message);
+                },
+                error:function(err){
+                    console.log(err)
+                }
+            })
         }
     </script>
 @endsection
