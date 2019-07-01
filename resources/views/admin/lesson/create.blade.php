@@ -47,12 +47,6 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">推荐</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="title" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">课程</label>
-                    <div class="col-sm-10">
                         <label class="radio-inline">
                             <input type="radio"  name="iscommend" value="1">是
                         </label>
@@ -106,7 +100,7 @@
             <div class="panel-body">
                 <button class="btn btn-primary" @click.prevent="add">添加视频</button>
             </div>
-            <textarea name="" id="" cols="30" rows="10" hidden>
+            <textarea name="videos">
                 @{{ videos }}
             </textarea>
         </div>

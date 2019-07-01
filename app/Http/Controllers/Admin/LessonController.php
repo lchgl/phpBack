@@ -37,9 +37,23 @@ class LessonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Lesson $lesson)
     {
-        //
+        //保存提交的数据
+        $lesson['title'] = $request['title'];
+        $lesson['introduce'] = $request['introduce'];
+        $lesson['preview'] = $request['preview'];
+        $lesson['iscommend'] = $request['iscommend'];
+        $lesson['ishot'] = $request['ishot'];
+        $lesson['click'] = $request['click'];
+        $lesson->save();
+
+        //对变量进行 JSON 解码后修改表格videos
+        $videos = json_decode($request['videos'],true);
+        foreach ($videos as $item) {
+            $lesson ->videos()->create($item);
+        }
+        return redirect('/admin/lesson');
     }
 
     /**
