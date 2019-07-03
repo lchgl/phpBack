@@ -22,6 +22,13 @@
     <link rel="stylesheet" href="/static/css/font-icon-style.css">
     <link rel="stylesheet" href="/static/css/style.default.css" id="theme-stylesheet">
     <link rel="stylesheet" href="/static/css/form.css">
+
+    <link href="/node_modules/hdjs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/node_modules/hdjs/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/node_modules/hdjs/app/util.js"></script>
+    <script src="/node_modules/hdjs/require.js"></script>
+    <script src="/node_modules/hdjs/config.js"></script>
+    <link href="/css/hdcms.css" rel="stylesheet">
 </head>
 
 <body>
