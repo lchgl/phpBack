@@ -14,6 +14,15 @@
 
     <title>Bootstrap Admin Template </title>
     <link rel="shortcut icon" href="/static/img/favicon.ico">
+    {{--<script src="/static/js/jquery.min.js"></script>--}}
+    {{--<script src="/static/js/popper/popper.min.js"></script>--}}
+    {{--<script src="/static/js/tether.min.js"></script>--}}
+    {{--<script src="/static/js/bootstrap.min.js"></script>--}}
+    {{--<script src="/static/js/jquery.cookie.js"></script>--}}
+    {{--<script src="/static/js/jquery.validate.min.js"></script>--}}
+    {{--<script src="/static/js/chart.min.js"></script>--}}
+    {{--<script src="/static/js/front.js"></script>--}}
+    {{--<script src="/static/js/vue.js"></script>--}}
 
     <!-- global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
@@ -24,11 +33,32 @@
     <link rel="stylesheet" href="/static/css/form.css">
 
     <link href="/node_modules/hdjs/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/node_modules/hdjs/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/node_modules/hdjs/css/font-awesome.min.css"
+          rel="stylesheet">
+    <script>
+        //HDJS组件需要的配置
+        hdjs = {
+            'base': '/node_modules/hdjs',
+            'uploader': '/component/uploader',
+            'filesLists': '/component/filesLists?',
+            'removeImage': '?s=component/upload/removeImage&m=member&siteid=18',
+            'ossSign': '?s=component/oss/sign&m=member&siteid=18',
+        };
+    </script>
     <script src="/node_modules/hdjs/app/util.js"></script>
     <script src="/node_modules/hdjs/require.js"></script>
     <script src="/node_modules/hdjs/config.js"></script>
     <link href="/css/hdcms.css" rel="stylesheet">
+    <script>
+        require(['jquery'], function ($) {
+            //为异步请求设置CSRF令牌
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        })
+    </script>
 </head>
 
 <body>
@@ -347,21 +377,11 @@
     @include('admin.layout.errors')
 </div>
 <!--Global Javascript -->
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/popper/popper.min.js"></script>
-<script src="/static/js/tether.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/jquery.cookie.js"></script>
-<script src="/static/js/jquery.validate.min.js"></script>
-<script src="/static/js/chart.min.js"></script>
-<script src="/static/js/front.js"></script>
-<script src="/static/js/vue.js"></script>
 @include('flash::message')
 <script>
-    $('#flash-overlay-modal').modal();
-    $.ajaxSetup({
-        headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
-    })
+    require(['bootstrap'], function ($) {
+        $('#flash-overlay-modal').modal();
+    });
 </script>
 <!--Core Javascript -->
 @yield('footScript')
