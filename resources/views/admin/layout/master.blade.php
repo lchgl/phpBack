@@ -14,15 +14,15 @@
 
     <title>Bootstrap Admin Template </title>
     <link rel="shortcut icon" href="/static/img/favicon.ico">
-    {{--<script src="/static/js/jquery.min.js"></script>--}}
+    <script src="/static/js/jquery.min.js"></script>
     {{--<script src="/static/js/popper/popper.min.js"></script>--}}
     {{--<script src="/static/js/tether.min.js"></script>--}}
     {{--<script src="/static/js/bootstrap.min.js"></script>--}}
     {{--<script src="/static/js/jquery.cookie.js"></script>--}}
     {{--<script src="/static/js/jquery.validate.min.js"></script>--}}
-    {{--<script src="/static/js/chart.min.js"></script>--}}
+    <script src="/static/js/chart.min.js"></script>
     {{--<script src="/static/js/front.js"></script>--}}
-    {{--<script src="/static/js/vue.js"></script>--}}
+    <script src="/static/js/vue.js"></script>
 
     <!-- global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
