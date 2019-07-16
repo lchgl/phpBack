@@ -94,7 +94,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" v-model="item.path">
                                 <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button" :id="v.id" id="uploadVideo">上传视频</button>
+                                        <button class="btn btn-default" :id="item.id">上传视频</button>
                                     </span>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
             <div class="panel-body">
                 <button class="btn btn-primary" @click.prevent="add">添加视频</button>
             </div>
-            <textarea name="videos">
+            <textarea name="videos" hidden>
                 @{{ videos }}
             </textarea>
         </div>
@@ -114,24 +114,27 @@
 @endsection
 @section('footScript')
     <script>
-        // require(['vue'],function(Vue){
-        //     new Vue({
-        //         el:'#app',
-        //         data:{
-        //             videos:[{title:'',path:''}]
-        //         },
-        //         methods:{
-        //             add:function () {
-        //                 let field = {title:'',path:''};
-        //                 this.videos.push(field);
-        //                 upload(field);
-        //             },
-        //             del:function(k){
-        //                 this.videos.splice(k,1)
-        //             }
-        //         }
-        //     });
-        // });
+        require(['vue'],function(Vue){
+            new Vue({
+                el:'#app',
+                data:{
+                    videos:[]
+                },
+                methods:{
+                    add:function () {
+                        let field = {title:'',path:'',id:'id'+ Date.parse(new Date())};
+                        this.videos.push(field);
+                        setTimeout(function(){
+                            //加个定时器防止dom还未生成
+                            upload(field);
+                        },200);
+                    },
+                    del:function(k){
+                        this.videos.splice(k,1)
+                    }
+                }
+            });
+        });
             //js本地图片预览，兼容ie[6-9]、火狐、Chrome17+、Opera11+、Maxthon3
             // $('#imgFile').on('input propertychange',function(){
             //     console.log(111)
@@ -219,7 +222,7 @@
             }
             function upload(field) {
                 require(['oss'], function (oss) {
-                    var id = '#' + field.id;
+                    var id = '#'+ field.id;
                     var uploader = oss.upload({
                         //获取签名
                         serverUrl: '/component/oss?',
@@ -228,32 +231,31 @@
                         //按钮元素
                         pick: id,
                         accept: {
-                            title: 'video',
-                            extensions: 'mp4',
-                            mimeTypes: 'video/mp4'
+                            // title: 'video',
+                            // extensions: 'mp4',
+                            // mimeTypes: 'video/mp4'
                         }
                     });
                     //上传开始
                     uploader.on('startUpload', function () {
-//                    console.log('开始上传');
+                        console.log('开始上传');
                     });
                     //上传成功
                     uploader.on('uploadSuccess', function (file, response) {
                         field.path = oss.oss.host + '/' + oss.oss.object_name;
-//                    console.log('上传完成,文件名:' + oss.oss.host + '/' + oss.oss.object_name);
+                        console.log('上传完成,文件名:' + oss.oss.host + '/' + oss.oss.object_name);
                     });
                     //上传中
                     uploader.on('uploadProgress', function (file, percentage) {
                         $("#percentage" + field.id).show().find('b').text(parseInt(percentage * 100) + '%');
-//                    console.log('上传中,进度:' + parseInt(percentage * 100));
+                        console.log('上传中,进度:' + parseInt(percentage * 100));
                     });
                     //上传结束
                     uploader.on('uploadComplete', function () {
                         $("#percentage" + field.id).hide();
-//                    console.log('上传结束');
+                        console.log('上传结束');
                     })
                 })
             }
-            upload('uploadVideo')
     </script>
 @endsection
