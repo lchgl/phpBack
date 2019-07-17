@@ -51,7 +51,10 @@ class LessonController extends Controller
         //对变量进行 JSON 解码后修改表格videos
         $videos = json_decode($request['videos'],true);
         foreach ($videos as $item) {
-            $lesson ->videos()->create($item);
+            $lesson ->videos()->create([
+                'title' => $item['title'],
+                'path' => $item['path']
+            ]);
         }
         return redirect('/admin/lesson');
     }

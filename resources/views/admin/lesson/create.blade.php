@@ -92,7 +92,7 @@
                         <label for="" class="col-sm-2 control-label">视频地址</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" v-model="item.path">
+                                <input type="text" class="form-control" name="path" v-model="item.path">
                                 <span class="input-group-btn">
                                         <button class="btn btn-default" :id="item.id">上传视频</button>
                                     </span>
