@@ -79,6 +79,9 @@ class LessonController extends Controller
     public function edit($id)
     {
         //
+        $lesson = Lesson::find($id);
+        $videos = json_encode($lesson->videos()->get()->toArray(),JSON_UNESCAPED_UNICODE);
+        return view('/admin/lesson/edit',compact('lesson','videos'));
     }
 
     /**
