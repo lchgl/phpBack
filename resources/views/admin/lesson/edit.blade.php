@@ -9,11 +9,13 @@
             }
         </style>
         <li><a href="/admin/lesson">课程列表</a></li>
-        <li class="active"><a href="/admin/tag/create">新增课程</a></li>
+        <li class="active"><a href="#">编辑课程</a></li>
     </ul>
     <!-- TAB NAVIGATION -->
     <form action="/admin/lesson/{{$lesson['id']}}" method="post" class="form-horizontal">
         {{csrf_field()}}
+        {{--伪造表单提交--}}
+        {{method_field('PUT')}}
         <div class="panel panel-default">
             <div class="panel-heading" style="line-height: 48px;background: #ccc;padding: 0 15px;">
                 <div class="panel-title">
@@ -118,7 +120,10 @@
             new Vue({
                 el:'#app',
                 data:{
-                    videos:[]
+                    videos:JSON.parse('{!! $videos !!}')
+                },
+                mounted:function(){
+                    this.videos.forEach((item)=>{upload(item)})
                 },
                 methods:{
                     add:function () {
