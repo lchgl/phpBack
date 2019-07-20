@@ -1,6 +1,6 @@
 # Laravel&VueJs 开发移动与桌面平台项目
 
-> 通过这个项目来学习Laravel和vue的开发过程
+> 通过这个项目来学习Laravel&Vue的开发过程
 
 
 ##开发环境
