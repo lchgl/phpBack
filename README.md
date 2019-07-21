@@ -12,7 +12,8 @@ laravel+mysql+php+bootstrap+require.js+axios+vuejs+vuex...
 是一个帮助提高laravel代码提示功能的插件
 
 ###主要知识点
-    一、利用Resouce资源控制器路由
+
+     一、利用Resouce资源控制器路由
 ```
     1.利用命令行在Article文件夹目录下创建一个名为ArticleController的资源控制器
     php artisan make:controller Article/ArticleController --resource
@@ -28,10 +29,11 @@ laravel+mysql+php+bootstrap+require.js+axios+vuejs+vuex...
 ```
 默认情况下前台发送Ajax是允许跨域请求的。我们可以在后台进行相关设置然后允许前台跨域请求。
 
-允许单个域名访问 header('Access-Control-Allow-Origin:http://www.houdunwang.com');
+允许单个域名访问 header('Access-Control-Allow-Origin:http://www.***.com');
 
 允许多个域名
-$origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : ''; $allow_origin = array( 	'http://www.houdunren.com', 	'http://www.houdunwang.com' ); if(in_array($origin, $allow_origin)){ 	header('Access-Control-Allow-Origin:'.$origin); }
+$origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : ''; 
+$allow_origin = array( 	'http://www.***.com', 	'http://www.***.com' ); if(in_array($origin, $allow_origin)){ 	header('Access-Control-Allow-Origin:'.$origin); }
 
 允许所有域名请求
 header('Access-Control-Allow-Origin:*');
