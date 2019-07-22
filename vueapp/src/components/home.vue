@@ -1,22 +1,17 @@
 <template>
     <div>
-
         <!--轮播图-->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href=""><img src="static/images/1.jpg"/></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href=""><img src="static/images/2.jpg"/></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href=""><img src="static/images/3.jpg"/></a>
-                </div>
-            </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
-        </div>
+       <swiper :options="swiperOption" ref="mySwiper">
+        <!-- slides -->
+        <swiper-slide v-for="item in banners" :key="item.id">
+            <img :src="item.path">
+        </swiper-slide>
+        <!-- Optional controls -->
+        <div class="swiper-pagination"  slot="pagination"></div>
+        <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
+        <!--<div class="swiper-button-next" slot="button-next"></div>-->
+        <div class="swiper-scrollbar"   slot="scrollbar"></div>
+    </swiper>
         <!--轮播图结束-->
 
         <!--推荐视频-->
@@ -90,7 +85,34 @@ export default {
     name: 'home',
     data () {
         return {
-
+            banners: [ {
+                id:1,
+                path:'static/images/1.jpg'
+            }, {
+                id:2,
+                path:'static/images/2.jpg'
+            },{
+                id:3,
+                path: 'static/images/3.jpg'
+            }],
+            swiperOption: {
+                // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
+                // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
+                notNextTick: true,
+                // swiper configs 所有的配置同swiper官方api配置
+                autoplay: 3000,
+                direction : 'vertical',
+                grabCursor : true,
+                setWrapperSize :true,
+                autoHeight: true,
+                pagination : '.swiper-pagination',
+                paginationClickable :true,
+                prevButton:'.swiper-button-prev',
+                nextButton:'.swiper-button-next',
+                scrollbar:'.swiper-scrollbar',
+                mousewheelControl : true,
+                observeParents:true,
+            }
         }
     },
 }
