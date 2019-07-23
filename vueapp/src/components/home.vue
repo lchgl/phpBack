@@ -4,12 +4,14 @@
        <swiper :options="swiperOption" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="item in banners" :key="item.id">
-            <img :src="item.path">
+            <router-link to="/video">
+                <img :src="item.path">
+            </router-link>
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
-        <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
-        <!--<div class="swiper-button-next" slot="button-next"></div>-->
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
         <div class="swiper-scrollbar"   slot="scrollbar"></div>
     </swiper>
         <!--轮播图结束-->
@@ -100,8 +102,8 @@ export default {
                 // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
                 notNextTick: true,
                 // swiper configs 所有的配置同swiper官方api配置
-                autoplay: 3000,
-                direction : 'vertical',
+                autoplay: 1000,
+                // direction : 'vertical',
                 grabCursor : true,
                 setWrapperSize :true,
                 autoHeight: true,
@@ -148,14 +150,18 @@ export default {
         width: 100%;
         height: 100%;
         position: relative;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
     .swiper-container .swiper-slide img{
-        height: 100%;
+        height: 200px;
+        width: 100%;
         position: absolute;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
+    }
+    .swiper-container .swiper-button-prev,.swiper-container .swiper-button-next{
+        transform: scale3d(.5,.5,.5);
     }
     /*分页器颜色*/
     .swiper-pagination-bullet-active{

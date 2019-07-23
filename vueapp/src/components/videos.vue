@@ -1,18 +1,13 @@
 <template>
     <div>
         <!--导航条-->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <a href="" class="swiper-slide cur">静态布局</a>
-                <a href="" class="swiper-slide">JavaScript</a>
-                <a href="" class="swiper-slide">PHP</a>
-                <a href="" class="swiper-slide">MySQL</a>
-                <a href="" class="swiper-slide">静态布局</a>
-                <a href="" class="swiper-slide">JavaScript</a>
-                <a href="" class="swiper-slide">PHP</a>
-                <a href="" class="swiper-slide">MySQL</a>
-            </div>
-        </div>
+        <swiper :options="swiperOption">
+            <swiper-slide v-for="v in tags" :key="v.id">
+                <!--<router-link :to="{params:{tid:v.id},name:'Video'}">-->
+                    {{v.name}}
+                <!--</router-link>-->
+            </swiper-slide>
+        </swiper>
         <!--导航条结束-->
 
         <!--视频列表-->
@@ -165,7 +160,19 @@ export default {
     name: 'videos',
     data () {
         return {
-
+            tags: [
+                {id:1,name:'html'},
+                {id:2,name:'css'},
+                {id:3,name:'js'},
+            ],
+            lesson: [],
+            swiperOption: {
+                pagination: '.swiper-pagination',
+                slidesPerView: 3,
+                paginationClickable: true,
+                spaceBetween: 30,
+                freeMode: true
+            }
         }
     }
 }
