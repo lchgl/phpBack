@@ -38,3 +38,13 @@ $allow_origin = array( 	'http://www.***.com', 	'http://www.***.com' ); i
 允许所有域名请求
 header('Access-Control-Allow-Origin:*');
 ```
+    三创建多对多的关联表
+```
+    1.创建一个Model
+    php artisan make:model Model/tagLesson -m 
+    2.去到database/migrations/ _create_tag_table.php创建表必要字段
+        $table->integer('tag_id');
+        $table->integer('lesson_id');
+    3.生成数据表
+    php artisan migrate
+```
