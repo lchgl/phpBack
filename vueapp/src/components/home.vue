@@ -20,45 +20,29 @@
         <h2>推荐视频</h2>
 
         <div id="recommend">
-            <a href="">
-                <img src="static/images/4.jpg" alt="" />
+            <!--<template v-for="commendLesson">-->
+                <!--<router-link>-->
+
+                <!--</router-link>-->
+            <!--</template>-->
+            <router-link :to="{params:{lessonId:item.id},name:'page'}" v-for="item in commendLesson" :key="item.id">
+                <img :src="item.preview" alt="" />
                 <i class="iconfont icon-bofang"></i>
-                <span class="time">22:56</span>
-                <span class="title">谷歌：没有扫描仪也能</span>
-            </a>
-            <a href="">
-                <img src="static/images/5.jpg" alt="" />
-                <i class="iconfont icon-bofang"></i>
-                <span class="time">22:56</span>
-                <span class="title">谷歌：没有扫描仪也能</span>
-            </a>
-            <a href="">
-                <img src="static/images/6.jpg" alt="" />
-                <i class="iconfont icon-bofang"></i>
-                <span class="time">22:56</span>
-                <span class="title">谷歌：没有扫描仪也能</span>
-            </a>
-            <a href="">
-                <img src="static/images/7.jpg" alt="" />
-                <i class="iconfont icon-bofang"></i>
-                <span class="time">22:56</span>
-                <span class="title">谷歌：没有扫描仪也能</span>
-            </a>
+                <span class="time">{{item.updated_at}}</span>
+                <span class="title">{{item.title}}</span>
+            </router-link>
         </div>
         <!--推荐视频结束-->
 
         <a href="" class="more">MORE ></a>
 
         <!--今日推荐-->
-        <h2>今日推荐</h2>
+        <h2>热门视频</h2>
 
         <div class="today">
-            <a href="" class="title">大数据下的广告：精准投放与精准消除</a>
-            <p class="column">网络资讯</p>
             <div class="pic">
-                <a href=""><img src="static/images/8.jpg"/></a>
-                <a href=""><img src="static/images/9.jpg"/></a>
-                <a href=""><img src="static/images/10.jpg"/></a>
+
+                <router-link :to="{params:{lessonId:item.id},name:'page'}" v-for="item in hotLesson" :key="item.id"><img :src="item.preview"/></router-link>
             </div>
         </div>
         <!--今日推荐结束-->
@@ -114,9 +98,19 @@ export default {
                 scrollbar:'.swiper-scrollbar',
                 mousewheelControl : true,
                 observeParents:true,
-            }
+            },
+            commendLesson:[],
+            hotLesson:[]
         }
     },
+    mounted () {
+        this.axios.get('http://laravel1.com/api/commendLesson/4').then(res=>{
+            this.commendLesson = res.data.data
+        })
+        this.axios.get('http://laravel1.com/api/hotLesson/4').then(res=>{
+            this.hotLesson = res.data.data
+        })
+    }
 }
 </script>
 
